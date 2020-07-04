@@ -101,7 +101,7 @@ code {
 }
 .footer-area .footer-bottom {
   display: flex;
-  align-items: center;
+  align-items: center !important;
 }
 .button-header {
   padding: 10px 15px 10px 10px;
@@ -132,6 +132,11 @@ code {
 
 .section-padding {
   padding: 108px 0 30px 0;
+}
+
+.contact-info__icon{
+  margin-right: 5px;
+  display: flex;
 }
 
 .icons, #form-icons {
@@ -219,7 +224,9 @@ padding-bottom: 0 !important;
 
   background: #07112f;
 }
-
+#txt{
+  margin-top: 16px;
+}
 
 @media (max-width: 991px) {
   .header_area .navbar {
