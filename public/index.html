@@ -184,71 +184,38 @@
     <section id="contact" class="section-margin">
       <div class="container">
         <h1>Contato</h1>
-        <div class="row">
-          <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
-            <div class="media contact-info">
-              <span class="contact-info__icon"><i class="ti-home"></i></span>
-              <div class="media-body">
-                <h3>Av. Pres. Kennedy nº 825 Sala 02</h3>
-                <p>Boqueirão – Praia Grande <br> CEP.: 11701-330 </p>
-              </div>
-            </div>
-            <div class="media contact-info">
-              <span class="contact-info__icon"><i class="fa fa-phone"></i></span>
-              <div class="media-body">
-                <h3>(13) 34739580</h3>
-                <p>(13) 34917020</p>
-              </div>
-            </div>
-            <a href="https://api.whatsapp.com/send?phone=5513974045899&text=Olá!" target="_blank">
-            <div class="media contact-info">
-              <span class="contact-info__icon"><i class="fab fa-whatsapp"></i></span>
-              <div class="media-body">
-                <h3>(13) 974045899</h3>
-                <p></p>
-              </div></a>
-              <div class="media contact-info">
-                <span class="contact-info__icon"><i class="fa fa-envelope" id="envelope"></i><i class="fab fa-skype"></i></span>
-                <div class="media-body">
-                  <h3><a href="mailto:contato@helptoner.com.br">contato@helptoner.com.br</a></h3>
+        <div class="col-md-8 col-lg-9" style="margin: auto; padding-bottom: 32px;">
+          <form class="form-contact contact_form" action="https://formspree.io/mvoqljbz" method="POST" id="contactForm" novalidate="novalidate">
+              <div class="col-lg-12" style="padding-left: 0; padding-right: 0;">
+                <div class="form-group">
+                  <input class="form-control" name="name" id="name" type="text" placeholder="Nome">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" name="email" id="email" type="email" placeholder="E-mail">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" name="phone" id="phone" type="phone" placeholder="Telefone">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" name="subject" id="subject" type="text" placeholder="Assunto">
                 </div>
               </div>
-            </div>
-            <div class="col-md-8 col-lg-9">
-              <form class="form-contact contact_form" action="https://formspree.io/mvoqljbz" method="POST" id="contactForm" novalidate="novalidate">
-                <div class="row">
-                  <div class="col-lg-5">
-                    <div class="form-group">
-                      <input class="form-control" name="name" id="name" type="text" placeholder="Nome">
-                    </div>
-                    <div class="form-group">
-                      <input class="form-control" name="email" id="email" type="email" placeholder="E-mail">
-                    </div>
-                    <div class="form-group">
-                      <input class="form-control" name="phone" id="phone" type="phone" placeholder="Telefone">
-                    </div>
-                    <div class="form-group">
-                      <input class="form-control" name="subject" id="subject" type="text" placeholder="Assunto">
-                    </div>
-                  </div>
-                  <div class="col-lg-7">
-                    <div class="form-group">
-                        <textarea class="form-control different-control w-100" name="message" id="message" cols="30" rows="7" placeholder="Mensagem"></textarea>
-                    </div>
-                  </div>
+              <div class="col-lg-12" style="padding-left: 0; padding-right: 0;">
+                <div class="form-group">
+                    <textarea class="form-control different-control w-100" name="message" id="message" cols="30" rows="7" placeholder="Mensagem"></textarea>
                 </div>
-                <div class="form-group text-center text-md-right mt-3" id="form-icons">
-                  <div class="icons">
-                    <a href="https://api.whatsapp.com/send?phone=5513974045899&text=Olá!" target="_blank"><i class="fab fa-whatsapp" id="whatsapp"></i></a>
-                    <a href="https://www.facebook.com/helptoner/" target="_blank"><i class="fab fa-facebook" id="facebook"></i></a>
-                    <a href="https://www.instagram.com/helptoner2020/" target="_blank"><i class="fab fa-instagram" id="instagram"></i></a>
-                    <a href="https://www.linkedin.com/company/helptoner-suprimentos-pecas-e-assistencia-tecnica-para-copiadoras/about/" target="_blank"><i class="fab fa-linkedin" id="linkedin"></i></a>
-                  </div>
-                  <button type="submit" class="button button-contactForm">Enviar</button>
-                </div>
-              </form>
+              </div>
+            <div class="form-group text-center text-md-right mt-3" id="form-icons">
+              <div class="icons">
+                <a href="https://api.whatsapp.com/send?phone=5513974045899&text=Olá!" target="_blank"><i class="fab fa-whatsapp" id="whatsapp"></i></a>
+                <a href="https://www.facebook.com/helptoner/" target="_blank"><i class="fab fa-facebook" id="facebook"></i></a>
+                <a href="https://www.instagram.com/helptoner2020/" target="_blank"><i class="fab fa-instagram" id="instagram"></i></a>
+                <a href="https://www.linkedin.com/company/helptoner-suprimentos-pecas-e-assistencia-tecnica-para-copiadoras/about/" target="_blank"><i class="fab fa-linkedin" id="linkedin"></i></a>
+              </div>
+              <button type="submit" class="button button-contactForm">Enviar</button>
             </div>
-          </div>
+          </form>
+        </div>
         </div>
         <div class="d-none d-sm-block mb-5 pb-4">
           <div id="map" style="height: 420px;">
