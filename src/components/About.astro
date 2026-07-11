@@ -1,0 +1,109 @@
+---
+import { BUSINESS } from '../config';
+---
+
+<section id="sobre" class="bg-brand-50/60 py-20 sm:py-28">
+  <div
+    class="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2"
+  >
+    <div class="reveal">
+      <p
+        class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-accent-500"
+      >
+        <span class="h-px w-8 bg-accent-500/50" aria-hidden="true"></span>
+        Sobre a Helptoner
+      </p>
+      <h2
+        class="font-display mt-4 text-3xl font-bold tracking-tight text-brand-900 sm:text-[2.6rem] sm:leading-tight"
+      >
+        A assistência técnica de impressoras do litoral sul de SP
+      </h2>
+      <div class="mt-6 space-y-4 text-base leading-relaxed text-slate-600">
+        <p>
+          A <strong class="text-brand-900">Helptoner</strong> é especializada em
+          conserto, manutenção e suprimentos para impressoras e copiadoras em
+          Praia Grande. Nossa loja fica na Av. Presidente Kennedy, no coração do
+          Boqueirão, e de lá atendemos residências, escritórios e empresas de
+          toda a cidade — da Guilhermina ao Ocian, da Aviação ao Canto do Forte
+          — e também das cidades vizinhas do litoral sul de São Paulo.
+        </p>
+        <p>
+          Trabalhamos com transparência: você recebe o diagnóstico e o valor
+          antes de autorizar qualquer reparo. É o nosso jeito de honrar o
+          slogan <em class="font-semibold text-brand-900"
+            >“{BUSINESS.slogan}”</em
+          > em cada atendimento, seja uma recarga de toner ou um contrato de
+          manutenção para toda a sua empresa.
+        </p>
+      </div>
+
+      <ul class="mt-9 space-y-3.5">
+        {
+          [
+            'Atendimento na loja, em domicílio e em empresas',
+            'Diagnóstico transparente: valor aprovado antes do reparo',
+            'Suprimentos originais e compatíveis com garantia',
+          ].map((item) => (
+            <li class="flex items-center gap-3 text-sm font-medium text-brand-900 sm:text-base">
+              <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-wa-500/15 text-wa-600">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+              </span>
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <div
+        class="rounded-3xl border border-brand-100 bg-white p-8 shadow-xl shadow-brand-900/5 sm:p-10"
+      >
+        <h3 class="font-display text-lg font-semibold text-brand-900">
+          Marcas que atendemos
+        </h3>
+        <ul class="mt-5 flex flex-wrap gap-2.5">
+          {
+            [
+              'HP',
+              'Epson',
+              'Canon',
+              'Brother',
+              'Samsung',
+              'Lexmark',
+              'Kyocera',
+              'Ricoh',
+              'Xerox',
+              'OKI',
+            ].map((brand) => (
+              <li class="rounded-full bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-800">
+                {brand}
+              </li>
+            ))
+          }
+        </ul>
+
+        <hr class="my-7 border-slate-100" />
+
+        <h3 class="font-display text-lg font-semibold text-brand-900">
+          Bairros de Praia Grande que atendemos
+        </h3>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600">
+          {BUSINESS.neighborhoods.join(', ')} e todos os demais bairros da
+          cidade — além de São Vicente, Santos, Mongaguá e Itanhaém.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

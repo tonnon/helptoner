@@ -1,0 +1,53 @@
+---
+/**
+ * Logotipo Helptoner recriado em vetor leve (~1 KB), fiel ao original:
+ * "HELP" em vermelho + "TONER" em azul, itálico pesado, com as duas
+ * setas curvas (vermelha acima, azul abaixo) extraídas do arquivo original.
+ * Renderizado inline para herdar a fonte Poppins da página.
+ */
+interface Props {
+  /** 'dark' para uso sobre fundos escuros */
+  variant?: 'light' | 'dark';
+  class?: string;
+}
+
+const { variant = 'light', class: className = '' } = Astro.props;
+
+const helpColor = variant === 'dark' ? '#ff5a5f' : 'var(--color-logo-red)';
+const tonerColor = variant === 'dark' ? '#ffffff' : 'var(--color-logo-blue)';
+---
+
+<span class={`inline-flex flex-col leading-none select-none ${className}`}>
+  <svg
+    viewBox="52 53 796 68"
+    class="w-full h-[0.32em]"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+    fill="none"
+  >
+    <path
+      fill={helpColor}
+      d="M52.523,119.054c0,0,397.266-97.968,706.008-44.518l88.945-18.63l-18.125,80.009H511.209l36.676-16.86 C547.885,119.054,514.747,53.864,52.523,119.054z"
+    ></path>
+  </svg>
+  <span
+    class="font-display italic font-extrabold tracking-tight whitespace-nowrap"
+    style="font-size: 1em;"
+  >
+    <span style={`color: ${helpColor}`}>HELP</span><span
+      style={`color: ${tonerColor}`}>TONER</span
+    >
+  </span>
+  <svg
+    viewBox="52 276 796 81"
+    class="w-full h-[0.32em]"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+    fill="none"
+  >
+    <path
+      fill={tonerColor}
+      d="M847.477,293.681c0,0-397.264,97.969-706.004,44.514l-88.949,18.632l18.126-80.01h318.142l-36.674,16.864 C352.117,293.681,385.256,358.867,847.477,293.681z"
+    ></path>
+  </svg>
+</span>

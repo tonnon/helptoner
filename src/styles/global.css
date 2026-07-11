@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-display: "Poppins", var(--font-sans);
+
+  /* Azul petróleo — cor principal da identidade do site */
+  --color-brand-50: #f1f7fc;
+  --color-brand-100: #e0edf8;
+  --color-brand-200: #b9d9f0;
+  --color-brand-300: #85bce3;
+  --color-brand-400: #4a9ad2;
+  --color-brand-500: #257ebf;
+  --color-brand-600: #1763a1;
+  --color-brand-700: #144f83;
+  --color-brand-800: #14446d;
+  --color-brand-900: #0f2f4c;
+  --color-brand-950: #081e33;
+
+  /* Laranja — detalhes e CTAs secundários */
+  --color-accent-400: #ff9a4d;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+
+  /* Ciano — detalhes finos */
+  --color-cyan-glow: #38d5f5;
+
+  /* Verde oficial do WhatsApp */
+  --color-wa-500: #25d366;
+  --color-wa-600: #1da851;
+
+  /* Cores do logotipo Helptoner */
+  --color-logo-red: #e8232b;
+  --color-logo-blue: #1d1dd8;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Compensa a altura do header fixo ao navegar por âncoras */
+  scroll-padding-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Fade-in ao rolar: só é ativado quando o JS marca <html class="js">,
+ * garantindo que o conteúdo fique visível sem JavaScript (e para crawlers).
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .reveal-delay-1 { transition-delay: 0.1s; }
+  .js .reveal-delay-2 { transition-delay: 0.2s; }
+  .js .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* Pulso sutil do botão flutuante do WhatsApp */
+  @keyframes wa-pulse {
+    0% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0.45); }
+    70% { box-shadow: 0 0 0 16px rgb(37 211 102 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0); }
+  }
+
+  .wa-pulse {
+    animation: wa-pulse 2.4s ease-out infinite;
+  }
+}
+
+/* Accordion do FAQ */
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-plus {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+details.faq-item[open] .faq-plus {
+  transform: rotate(45deg);
+}
+
+/* Padrões de fundo sutis */
+.bg-dots {
+  background-image: radial-gradient(
+    circle,
+    rgb(255 255 255 / 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 26px 26px;
+}
+
+.bg-grid-light {
+  background-image:
+    linear-gradient(rgb(15 47 76 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 47 76 / 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Texto com gradiente (destaques de headline) */
+.text-gradient-accent {
+  background: linear-gradient(92deg, #ffb56b 0%, #f97316 55%, #ff9a4d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Sublinhado animado dos links de navegação */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-500),
+    var(--color-cyan-glow)
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Header ganha sombra ao rolar (aplicado via JS) */
+.header-scrolled {
+  box-shadow: 0 10px 40px -12px rgb(8 30 51 / 0.18);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Reflexo que atravessa botões primários no hover */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 42%,
+      rgb(255 255 255 / 0.35) 50%,
+      transparent 58%
+    );
+    transform: translateX(-160%);
+    transition: transform 0.9s ease;
+    pointer-events: none;
+  }
+
+  .btn-shine:hover::after {
+    transform: translateX(160%);
+  }
+
+  /* Cards flutuantes do hero */
+  @keyframes float-y {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .float-slow {
+    animation: float-y 5.5s ease-in-out infinite;
+  }
+
+  .float-slower {
+    animation: float-y 7s ease-in-out 1.2s infinite;
+  }
+
+  /* Marquee de marcas */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-track {
+    animation: marquee 36s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}

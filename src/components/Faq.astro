@@ -1,0 +1,76 @@
+---
+import { faqs } from '../data/faq';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<section id="faq" class="bg-white py-20 sm:py-28">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6">
+    <div class="reveal text-center">
+      <p
+        class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-accent-500"
+      >
+        <span class="h-px w-8 bg-accent-500/50" aria-hidden="true"></span>
+        Dúvidas frequentes
+        <span class="h-px w-8 bg-accent-500/50" aria-hidden="true"></span>
+      </p>
+      <h2
+        class="font-display mt-4 text-3xl font-bold tracking-tight text-brand-900 sm:text-[2.6rem] sm:leading-tight"
+      >
+        Perguntas que recebemos todo dia
+      </h2>
+      <p class="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+        Não achou a sua? É só chamar no WhatsApp que a gente responde rapidinho.
+      </p>
+    </div>
+
+    <div class="reveal reveal-delay-1 mt-14 border-t border-slate-200">
+      {
+        faqs.map((item, index) => (
+          <details class="faq-item group border-b border-slate-200">
+            <summary class="flex cursor-pointer list-none items-baseline gap-5 py-6 text-left">
+              <span class="font-display text-sm font-bold text-accent-500">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span class="font-display flex-1 text-base font-semibold text-brand-900 transition-colors group-hover:text-brand-700 sm:text-lg">
+                {item.question}
+              </span>
+              <span
+                class="faq-plus inline-flex h-8 w-8 shrink-0 translate-y-1.5 items-center justify-center self-start rounded-full border border-slate-200 text-brand-900 transition-colors group-hover:border-accent-500/50 group-hover:text-accent-600"
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </span>
+            </summary>
+            <p class="pb-7 pl-11 pr-14 text-sm leading-relaxed text-slate-600 sm:text-base">
+              {item.answer}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Schema.org: FAQPage -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

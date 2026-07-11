@@ -1,0 +1,138 @@
+---
+import { WHATSAPP_URL } from '../config';
+
+const services = [
+  {
+    title: 'Conserto de impressoras',
+    description:
+      'Diagnóstico e reparo de impressoras a laser, jato de tinta, tanque de tinta e multifuncionais. Você recebe o orçamento antes de autorizar qualquer serviço.',
+    icon: 'wrench',
+  },
+  {
+    title: 'Manutenção preventiva',
+    description:
+      'Limpeza interna, lubrificação e troca de peças de desgaste para evitar paradas inesperadas e prolongar a vida útil do seu equipamento.',
+    icon: 'shield',
+  },
+  {
+    title: 'Toners e cartuchos',
+    description:
+      'Venda de suprimentos originais e compatíveis com garantia para HP, Epson, Canon, Brother, Samsung e outras marcas. Retire na loja ou receba em Praia Grande.',
+    icon: 'cartridge',
+  },
+  {
+    title: 'Recarga de suprimentos',
+    description:
+      'Recarga de toners e cartuchos com insumos de qualidade e teste de impressão antes da entrega. Economia de até 70% em relação ao suprimento novo.',
+    icon: 'refresh',
+  },
+  {
+    title: 'Atendimento a empresas',
+    description:
+      'Contratos de manutenção, atendimento prioritário e visitas técnicas para escritórios e comércios de Praia Grande e região. Sua operação não para.',
+    icon: 'building',
+  },
+  {
+    title: 'Copiadoras e multifuncionais',
+    description:
+      'Assistência técnica especializada em copiadoras e multifuncionais de grande porte, incluindo equipamentos Xerox, Ricoh e Kyocera.',
+    icon: 'copier',
+  },
+];
+
+const iconPaths: Record<string, string> = {
+  wrench:
+    'M14.7 6.3a4.5 4.5 0 0 0-6.09 5.36L3 17.25V21h3.75l5.59-5.61A4.5 4.5 0 0 0 17.7 9.3l-2.83 2.83-2.12-2.12L14.7 6.3z',
+  shield:
+    'M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z M9.5 12l2 2 3.5-3.5',
+  cartridge:
+    'M6 4h12v5H6V4z M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9z M8 13h8',
+  refresh:
+    'M20 11a8 8 0 0 0-14.4-3.6M4 4v4h4 M4 13a8 8 0 0 0 14.4 3.6M20 20v-4h-4',
+  building:
+    'M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16 M15 9h4a1 1 0 0 1 1 1v11 M4 21h17 M8 8h3M8 12h3M8 16h3',
+  copier:
+    'M7 8V3h10v5 M5 8h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v-4H7v4H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z M7 15h10v6H7v-6z',
+};
+---
+
+<section id="servicos" class="relative bg-white py-20 sm:py-24">
+  <div class="bg-grid-light absolute inset-0" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <p
+        class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-accent-500"
+      >
+        <span class="h-px w-8 bg-accent-500/50" aria-hidden="true"></span>
+        Serviços
+        <span class="h-px w-8 bg-accent-500/50" aria-hidden="true"></span>
+      </p>
+      <h2
+        class="font-display mt-4 text-3xl font-bold tracking-tight text-brand-900 sm:text-[2.6rem] sm:leading-tight"
+      >
+        Tudo o que a sua impressora precisa em um só lugar
+      </h2>
+      <p class="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+        Do conserto emergencial ao contrato de manutenção para empresas: a
+        Helptoner resolve no Boqueirão, em toda Praia Grande e no litoral sul
+        de São Paulo.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((service, index) => (
+          <article
+            class={`reveal reveal-delay-${(index % 3) + 1} group relative flex flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-brand-200/70 hover:shadow-2xl hover:shadow-brand-900/10`}
+          >
+            <span
+              class="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-accent-500 via-accent-400 to-cyan-glow transition-transform duration-500 group-hover:scale-x-100"
+              aria-hidden="true"
+            />
+            <div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-700 to-brand-900 text-white shadow-lg shadow-brand-900/20 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
+              <svg
+                viewBox="0 0 24 24"
+                class="h-7 w-7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d={iconPaths[service.icon]} />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold text-brand-900">
+              {service.title}
+            </h3>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
+              {service.description}
+            </p>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener"
+              class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-600 transition-colors hover:text-accent-500"
+            >
+              Pedir orçamento
+              <svg
+                viewBox="0 0 24 24"
+                class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14m0 0l-6-6m6 6l-6 6" />
+              </svg>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

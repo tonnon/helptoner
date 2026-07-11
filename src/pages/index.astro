@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Brands from '../components/Brands.astro';
+import Services from '../components/Services.astro';
+import Features from '../components/Features.astro';
+import About from '../components/About.astro';
+import Faq from '../components/Faq.astro';
+import MapSection from '../components/MapSection.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+const title =
+  'Conserto de Impressora em Praia Grande | Toner e Manutenção — Helptoner';
+const description =
+  'Conserto de impressora em Praia Grande com orçamento sem compromisso. Manutenção, toner e cartucho no Boqueirão. Atendemos empresas de todo o litoral sul de SP.';
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  <main>
+    <Hero />
+    <Brands />
+    <Services />
+    <Features />
+    <About />
+    <Faq />
+    <MapSection />
+    <Contact />
+  </main>
+  <Footer />
+  <WhatsAppButton />
+</Layout>

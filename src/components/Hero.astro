@@ -1,0 +1,256 @@
+---
+import WhatsAppIcon from './icons/WhatsAppIcon.astro';
+import { WHATSAPP_URL } from '../config';
+---
+
+<section
+  id="inicio"
+  class="relative overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800 pt-32 pb-24 sm:pt-40 sm:pb-32"
+>
+  <!-- Texturas e brilhos em camadas -->
+  <div class="bg-dots absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute -top-40 -right-40 h-[34rem] w-[34rem] rounded-full bg-cyan-glow/10 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -bottom-48 -left-32 h-[30rem] w-[30rem] rounded-full bg-accent-500/10 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute top-1/3 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-brand-500/20 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div
+    class="relative mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.1fr_1fr]"
+  >
+    <div class="reveal">
+      <p
+        class="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.06] px-4 py-1.5 text-xs font-medium tracking-wide text-cyan-glow backdrop-blur-sm sm:text-sm"
+      >
+        <span class="relative flex h-2 w-2">
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-glow opacity-60"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-cyan-glow"
+          ></span>
+        </span>
+        Assistência técnica de impressoras em Praia Grande – SP
+      </p>
+
+      <h1
+        class="font-display text-[2.6rem] font-bold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-[3.6rem]"
+      >
+        Sua impressora funcionando{' '}
+        <span class="text-gradient-accent">hoje mesmo</span> em Praia Grande
+      </h1>
+
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+        Conserto, manutenção preventiva e suprimentos — toners e cartuchos
+        originais e compatíveis — com orçamento sem compromisso. Atendemos
+        residências e empresas no Boqueirão, Guilhermina, Ocian e em todo o
+        litoral sul de SP.
+      </p>
+
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4">
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener"
+          class="btn-shine inline-flex items-center justify-center gap-2.5 rounded-full bg-wa-500 px-8 py-4 text-base font-semibold text-white shadow-lg shadow-wa-500/25 transition-all hover:-translate-y-0.5 hover:bg-wa-600 hover:shadow-xl hover:shadow-wa-500/30"
+        >
+          <WhatsAppIcon class="h-5 w-5" />
+          Chamar no WhatsApp
+        </a>
+        <a
+          href="#servicos"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.03] px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/10"
+        >
+          Conhecer os serviços
+          <svg
+            viewBox="0 0 24 24"
+            class="h-4 w-4 transition-transform group-hover:translate-y-0.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 5v14m0 0l-6-6m6 6l6-6"></path>
+          </svg>
+        </a>
+      </div>
+
+      <div
+        class="mt-11 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-white/10 pt-7"
+      >
+        <div class="flex items-center gap-3 lg:hidden">
+          <span class="font-display text-2xl font-bold text-white">4,0</span>
+          <div>
+            <div class="flex gap-0.5 text-amber-400" aria-hidden="true">
+              {
+                [1, 2, 3, 4].map(() => (
+                  <svg viewBox="0 0 20 20" class="h-3.5 w-3.5 fill-current">
+                    <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
+                  </svg>
+                ))
+              }
+              <svg viewBox="0 0 20 20" class="h-3.5 w-3.5 fill-current opacity-30">
+                <path
+                  d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z"
+                ></path>
+              </svg>
+            </div>
+            <p class="mt-0.5 text-xs text-slate-400">30 avaliações no Google</p>
+          </div>
+        </div>
+        {
+          [
+            'Orçamento sem compromisso',
+            'Técnicos especializados',
+            'Atendimento rápido',
+          ].map((item) => (
+            <span class="flex items-center gap-2 text-sm text-slate-300">
+              <svg
+                viewBox="0 0 24 24"
+                class="h-5 w-5 text-cyan-glow"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+              {item}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Composição visual: impressora + cards flutuantes -->
+    <div class="reveal reveal-delay-1 relative hidden lg:block" aria-hidden="true">
+      <div
+        class="absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-cyan-glow/15 via-transparent to-accent-500/15 blur-2xl"
+      >
+      </div>
+
+      <div
+        class="relative rounded-[2rem] border border-white/10 bg-white/[0.05] p-9 shadow-2xl shadow-brand-950/50 backdrop-blur-sm"
+      >
+        <svg viewBox="0 0 420 360" class="w-full" fill="none" role="img">
+          <!-- Folha saindo -->
+          <rect x="120" y="28" width="180" height="120" rx="8" fill="#f8fafc"></rect>
+          <rect x="140" y="48" width="140" height="8" rx="4" fill="#cbd5e1"></rect>
+          <rect x="140" y="66" width="105" height="8" rx="4" fill="#e2e8f0"></rect>
+          <rect x="140" y="84" width="125" height="8" rx="4" fill="#e2e8f0"></rect>
+          <!-- Corpo da impressora -->
+          <rect x="60" y="128" width="300" height="150" rx="20" fill="#134f83"></rect>
+          <rect x="60" y="128" width="300" height="150" rx="20" fill="url(#body-shine)"></rect>
+          <!-- Abertura de saída -->
+          <rect x="100" y="146" width="220" height="14" rx="7" fill="#081e33"></rect>
+          <!-- Painel -->
+          <circle cx="330" cy="200" r="10" fill="#38d5f5"></circle>
+          <circle cx="330" cy="230" r="6" fill="#f97316"></circle>
+          <rect x="92" y="188" width="120" height="10" rx="5" fill="#1763a1"></rect>
+          <rect x="92" y="210" width="88" height="10" rx="5" fill="#1763a1"></rect>
+          <!-- Bandeja -->
+          <rect x="88" y="278" width="244" height="26" rx="10" fill="#0f2f4c"></rect>
+          <rect x="120" y="304" width="180" height="12" rx="6" fill="#081e33"></rect>
+          <!-- Cartuchos de toner -->
+          <g>
+            <rect x="96" y="330" width="52" height="20" rx="6" fill="#38d5f5"></rect>
+            <rect x="156" y="330" width="52" height="20" rx="6" fill="#f97316"></rect>
+            <rect x="216" y="330" width="52" height="20" rx="6" fill="#e8232b"></rect>
+            <rect x="276" y="330" width="52" height="20" rx="6" fill="#f8fafc"></rect>
+          </g>
+          <defs>
+            <linearGradient
+              id="body-shine"
+              x1="60"
+              y1="128"
+              x2="360"
+              y2="278"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stop-color="#ffffff" stop-opacity="0.14"></stop>
+              <stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Card: avaliação no Google -->
+      <div
+        class="float-slow absolute -left-12 top-10 rounded-2xl bg-white px-5 py-4 shadow-2xl shadow-brand-950/40"
+      >
+        <div class="flex items-center gap-3">
+          <span class="font-display text-3xl font-bold text-brand-900">4,0</span>
+          <div>
+            <div class="flex gap-0.5 text-amber-400">
+              {
+                [1, 2, 3, 4].map(() => (
+                  <svg viewBox="0 0 20 20" class="h-4 w-4 fill-current">
+                    <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
+                  </svg>
+                ))
+              }
+              <svg viewBox="0 0 20 20" class="h-4 w-4 fill-current opacity-25">
+                <path
+                  d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z"
+                ></path>
+              </svg>
+            </div>
+            <p class="mt-1 text-xs font-medium text-slate-500">
+              30 avaliações no Google
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: prazo -->
+      <div
+        class="float-slower absolute -right-8 bottom-14 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 shadow-2xl shadow-brand-950/40 backdrop-blur-md"
+      >
+        <p class="text-[0.7rem] font-medium uppercase tracking-wider text-slate-300">
+          Reparos simples em
+        </p>
+        <p class="font-display mt-0.5 text-2xl font-bold text-white">
+          24–48h
+          <span class="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-wa-500/20 align-middle">
+            <svg
+              viewBox="0 0 24 24"
+              class="h-3 w-3 text-wa-500"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divisor em curva, ecoando o swoosh do logotipo -->
+  <svg
+    viewBox="0 0 1440 72"
+    preserveAspectRatio="none"
+    class="absolute bottom-0 left-0 h-10 w-full sm:h-14"
+    aria-hidden="true"
+  >
+    <path
+      d="M0,72 L0,58 C420,86 980,4 1440,44 L1440,72 Z"
+      fill="#ffffff"
+    ></path>
+  </svg>
+</section>

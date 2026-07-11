@@ -1,0 +1,131 @@
+---
+const stats = [
+  { value: '4,0★', label: 'Avaliação no Google', accent: 'text-amber-400' },
+  { value: '30+', label: 'Avaliações de clientes', accent: 'text-cyan-glow' },
+  { value: '10+', label: 'Marcas atendidas', accent: 'text-accent-400' },
+  { value: '5', label: 'Cidades no litoral sul', accent: 'text-cyan-glow' },
+];
+
+const features = [
+  {
+    title: 'Atendimento rápido',
+    description:
+      'Diagnóstico no mesmo dia na maioria dos casos. Sabemos que impressora parada é prejuízo — a gente corre contra o relógio por você.',
+    icon: 'bolt',
+  },
+  {
+    title: 'Orçamento sem compromisso',
+    description:
+      'Você sabe o valor antes de decidir. Sem taxa escondida, sem surpresa: aprovou, consertamos; não aprovou, sem custo.',
+    icon: 'document',
+  },
+  {
+    title: 'Técnicos especializados',
+    description:
+      'Equipe com experiência nas principais marcas do mercado — HP, Epson, Canon, Brother, Samsung, Xerox e outras.',
+    icon: 'badge',
+  },
+  {
+    title: 'Praia Grande e região',
+    description:
+      'Loja no Boqueirão e atendimento em toda Praia Grande, São Vicente, Santos e demais cidades do litoral sul de SP.',
+    icon: 'pin',
+  },
+];
+
+const iconPaths: Record<string, string> = {
+  bolt: 'M13 2L4.5 13.5H11L9.5 22 19 10h-6.5L13 2z',
+  document:
+    'M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z M14 3v5h5 M9.5 14.5l2 2 3.5-4',
+  badge:
+    'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M9.5 9l1.8 1.8L14.8 7.3 M8.5 14 7 21l5-3 5 3-1.5-7',
+  pin: 'M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+};
+---
+
+<section
+  id="diferenciais"
+  class="relative overflow-hidden bg-brand-950 py-20 sm:py-28"
+>
+  <div class="bg-dots absolute inset-0 opacity-50" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute -top-24 right-1/4 h-80 w-80 rounded-full bg-brand-500/15 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -bottom-32 left-1/5 h-80 w-80 rounded-full bg-accent-500/10 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <!-- Números que dão confiança -->
+    <div
+      class="reveal grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 backdrop-blur-sm lg:grid-cols-4"
+    >
+      {
+        stats.map((stat) => (
+          <div class="bg-brand-950/85 px-6 py-8 text-center">
+            <p class={`font-display text-3xl font-bold sm:text-4xl ${stat.accent}`}>
+              {stat.value}
+            </p>
+            <p class="mt-1.5 text-xs font-medium uppercase tracking-wider text-slate-400">
+              {stat.label}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="reveal mx-auto mt-20 max-w-2xl text-center">
+      <p
+        class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-cyan-glow"
+      >
+        <span class="h-px w-8 bg-cyan-glow/50" aria-hidden="true"></span>
+        Por que a Helptoner?
+        <span class="h-px w-8 bg-cyan-glow/50" aria-hidden="true"></span>
+      </p>
+      <h2
+        class="font-display mt-4 text-3xl font-bold tracking-tight text-white sm:text-[2.6rem] sm:leading-tight"
+      >
+        Compromisso &amp; Qualidade, do orçamento à entrega
+      </h2>
+      <p class="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
+        Nosso slogan não é enfeite: é a forma como atendemos cada cliente em
+        Praia Grande desde o primeiro contato.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        features.map((feature, index) => (
+          <div
+            class={`reveal reveal-delay-${(index % 4) % 3 + 1} group rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-cyan-glow/40 hover:from-white/[0.1]`}
+          >
+            <div class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-500/15 text-accent-400 ring-1 ring-accent-500/20 transition-transform duration-300 group-hover:scale-110">
+              <svg
+                viewBox="0 0 24 24"
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d={iconPaths[feature.icon]} />
+              </svg>
+            </div>
+            <h3 class="font-display text-lg font-semibold text-white">
+              {feature.title}
+            </h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-slate-300">
+              {feature.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

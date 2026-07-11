@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="28" fill="#0f2f4c"/>
+  <path d="M20 44c26-9 62-12 76-8l12-3-3 13H62l6-3c0-4-16-6-48 1z" fill="#e8232b"/>
+  <path d="M108 84c-26 9-62 12-76 8l-12 3 3-13h43l-6 3c0 4 16 6 48-1z" fill="#38d5f5"/>
+  <text x="64" y="76" text-anchor="middle" font-family="'Segoe UI', 'Poppins', Arial, sans-serif" font-size="42" font-style="italic" font-weight="800" fill="#ffffff">HT</text>
+</svg>
