@@ -10,19 +10,31 @@ import { WHATSAPP_URL } from '../config';
   <!-- Texturas e brilhos em camadas -->
   <div class="bg-dots absolute inset-0 opacity-60" aria-hidden="true"></div>
   <div
-    class="pointer-events-none absolute -top-40 -right-40 h-[34rem] w-[34rem] rounded-full bg-cyan-glow/10 blur-3xl"
-    aria-hidden="true"
-  >
-  </div>
-  <div
     class="pointer-events-none absolute -bottom-48 -left-32 h-[30rem] w-[30rem] rounded-full bg-accent-500/10 blur-3xl"
     aria-hidden="true"
   >
   </div>
   <div
-    class="pointer-events-none absolute top-1/3 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-brand-500/20 blur-3xl"
+    class="pointer-events-none absolute top-1/3 left-1/3 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl"
     aria-hidden="true"
   >
+  </div>
+
+  <!-- Split diagonal: painel claro atrás do cartão 3D -->
+  <div
+    class="pointer-events-none absolute inset-y-0 right-0 hidden w-[46%] lg:block"
+    aria-hidden="true"
+  >
+    <div
+      class="h-full w-full bg-gradient-to-b from-white via-brand-50 to-white"
+      style="clip-path: polygon(36% 0, 100% 0, 100% 100%, 0 100%);"
+    >
+    </div>
+    <div
+      class="absolute inset-y-0 left-[8%] w-px bg-gradient-to-b from-transparent via-cyan-glow/40 to-transparent"
+      style="transform: rotate(9deg); transform-origin: top;"
+    >
+    </div>
   </div>
 
   <div
@@ -72,7 +84,7 @@ import { WHATSAPP_URL } from '../config';
           Conhecer os serviços
           <svg
             viewBox="0 0 24 24"
-            class="h-4 w-4 transition-transform group-hover:translate-y-0.5"
+            class="h-4 w-4"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
@@ -134,109 +146,125 @@ import { WHATSAPP_URL } from '../config';
       </div>
     </div>
 
-    <!-- Composição visual: impressora + cards flutuantes -->
-    <div class="reveal reveal-delay-1 relative hidden lg:block" aria-hidden="true">
+    <!-- Cartão 3D interativo: inclina seguindo o mouse -->
+    <div
+      id="tilt-scene"
+      class="tilt-scene reveal reveal-delay-1 relative hidden lg:block"
+      aria-hidden="true"
+    >
       <div
-        class="absolute -inset-6 rounded-[3rem] bg-gradient-to-br from-cyan-glow/15 via-transparent to-accent-500/15 blur-2xl"
+        id="tilt-card"
+        class="tilt-card relative rounded-[2rem] border border-white/10 bg-gradient-to-br from-brand-800 via-brand-900 to-brand-950 shadow-2xl shadow-brand-950/60"
       >
-      </div>
+        <!-- Conteúdo do cartão (camada com profundidade) -->
+        <div class="tilt-layer relative overflow-hidden rounded-[2rem] p-9">
+          <div class="bg-dots absolute inset-0 opacity-40"></div>
+          <svg viewBox="0 0 420 360" class="relative w-full" fill="none" role="img">
+            <!-- Folha saindo -->
+            <rect x="120" y="28" width="180" height="120" rx="8" fill="#f8fafc"></rect>
+            <rect x="140" y="48" width="140" height="8" rx="4" fill="#cbd5e1"></rect>
+            <rect x="140" y="66" width="105" height="8" rx="4" fill="#e2e8f0"></rect>
+            <rect x="140" y="84" width="125" height="8" rx="4" fill="#e2e8f0"></rect>
+            <!-- Corpo da impressora -->
+            <rect x="60" y="128" width="300" height="150" rx="20" fill="#134f83"></rect>
+            <rect x="60" y="128" width="300" height="150" rx="20" fill="url(#body-shine)"></rect>
+            <!-- Abertura de saída -->
+            <rect x="100" y="146" width="220" height="14" rx="7" fill="#081e33"></rect>
+            <!-- Painel -->
+            <circle cx="330" cy="200" r="10" fill="#38d5f5"></circle>
+            <circle cx="330" cy="230" r="6" fill="#f97316"></circle>
+            <rect x="92" y="188" width="120" height="10" rx="5" fill="#1763a1"></rect>
+            <rect x="92" y="210" width="88" height="10" rx="5" fill="#1763a1"></rect>
+            <!-- Bandeja -->
+            <rect x="88" y="278" width="244" height="26" rx="10" fill="#0f2f4c"></rect>
+            <rect x="120" y="304" width="180" height="12" rx="6" fill="#081e33"></rect>
+            <!-- Cartuchos de toner (CMYK) -->
+            <g>
+              <rect x="96" y="330" width="52" height="20" rx="6" fill="#38d5f5"></rect>
+              <rect x="156" y="330" width="52" height="20" rx="6" fill="#f97316"></rect>
+              <rect x="216" y="330" width="52" height="20" rx="6" fill="#e8232b"></rect>
+              <rect x="276" y="330" width="52" height="20" rx="6" fill="#f8fafc"></rect>
+            </g>
+            <defs>
+              <linearGradient
+                id="body-shine"
+                x1="60"
+                y1="128"
+                x2="360"
+                y2="278"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#ffffff" stop-opacity="0.14"></stop>
+                <stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
 
-      <div
-        class="relative rounded-[2rem] border border-white/10 bg-white/[0.05] p-9 shadow-2xl shadow-brand-950/50 backdrop-blur-sm"
-      >
-        <svg viewBox="0 0 420 360" class="w-full" fill="none" role="img">
-          <!-- Folha saindo -->
-          <rect x="120" y="28" width="180" height="120" rx="8" fill="#f8fafc"></rect>
-          <rect x="140" y="48" width="140" height="8" rx="4" fill="#cbd5e1"></rect>
-          <rect x="140" y="66" width="105" height="8" rx="4" fill="#e2e8f0"></rect>
-          <rect x="140" y="84" width="125" height="8" rx="4" fill="#e2e8f0"></rect>
-          <!-- Corpo da impressora -->
-          <rect x="60" y="128" width="300" height="150" rx="20" fill="#134f83"></rect>
-          <rect x="60" y="128" width="300" height="150" rx="20" fill="url(#body-shine)"></rect>
-          <!-- Abertura de saída -->
-          <rect x="100" y="146" width="220" height="14" rx="7" fill="#081e33"></rect>
-          <!-- Painel -->
-          <circle cx="330" cy="200" r="10" fill="#38d5f5"></circle>
-          <circle cx="330" cy="230" r="6" fill="#f97316"></circle>
-          <rect x="92" y="188" width="120" height="10" rx="5" fill="#1763a1"></rect>
-          <rect x="92" y="210" width="88" height="10" rx="5" fill="#1763a1"></rect>
-          <!-- Bandeja -->
-          <rect x="88" y="278" width="244" height="26" rx="10" fill="#0f2f4c"></rect>
-          <rect x="120" y="304" width="180" height="12" rx="6" fill="#081e33"></rect>
-          <!-- Cartuchos de toner -->
-          <g>
-            <rect x="96" y="330" width="52" height="20" rx="6" fill="#38d5f5"></rect>
-            <rect x="156" y="330" width="52" height="20" rx="6" fill="#f97316"></rect>
-            <rect x="216" y="330" width="52" height="20" rx="6" fill="#e8232b"></rect>
-            <rect x="276" y="330" width="52" height="20" rx="6" fill="#f8fafc"></rect>
-          </g>
-          <defs>
-            <linearGradient
-              id="body-shine"
-              x1="60"
-              y1="128"
-              x2="360"
-              y2="278"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="#ffffff" stop-opacity="0.14"></stop>
-              <stop offset="1" stop-color="#ffffff" stop-opacity="0"></stop>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
+          <!-- Reflexo que acompanha o cursor -->
+          <div class="tilt-glare pointer-events-none absolute inset-0"></div>
+        </div>
 
-      <!-- Card: avaliação no Google -->
-      <div
-        class="float-slow absolute -left-12 top-10 rounded-2xl bg-white px-5 py-4 shadow-2xl shadow-brand-950/40"
-      >
-        <div class="flex items-center gap-3">
-          <span class="font-display text-3xl font-bold text-brand-900">4,0</span>
-          <div>
-            <div class="flex gap-0.5 text-amber-400">
-              {
-                [1, 2, 3, 4].map(() => (
-                  <svg viewBox="0 0 20 20" class="h-4 w-4 fill-current">
-                    <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
-                  </svg>
-                ))
-              }
-              <svg viewBox="0 0 20 20" class="h-4 w-4 fill-current opacity-25">
-                <path
-                  d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z"
-                ></path>
-              </svg>
+        <!-- Chip: avaliação no Google (flutua acima do cartão) -->
+        <div
+          class="tilt-chip-far absolute -left-12 top-10 rounded-2xl bg-white px-5 py-4 shadow-2xl shadow-brand-950/40"
+        >
+          <div class="flex items-center gap-3">
+            <span class="font-display text-3xl font-bold text-brand-900">4,0</span>
+            <div>
+              <div class="flex gap-0.5 text-amber-400">
+                {
+                  [1, 2, 3, 4].map(() => (
+                    <svg viewBox="0 0 20 20" class="h-4 w-4 fill-current">
+                      <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
+                    </svg>
+                  ))
+                }
+                <svg viewBox="0 0 20 20" class="h-4 w-4 fill-current opacity-25">
+                  <path
+                    d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z"
+                  ></path>
+                </svg>
+              </div>
+              <p class="mt-1 text-xs font-medium text-slate-500">
+                30 avaliações no Google
+              </p>
             </div>
-            <p class="mt-1 text-xs font-medium text-slate-500">
-              30 avaliações no Google
-            </p>
           </div>
         </div>
-      </div>
 
-      <!-- Card: prazo -->
-      <div
-        class="float-slower absolute -right-8 bottom-14 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 shadow-2xl shadow-brand-950/40 backdrop-blur-md"
-      >
-        <p class="text-[0.7rem] font-medium uppercase tracking-wider text-slate-300">
-          Reparos simples em
-        </p>
-        <p class="font-display mt-0.5 text-2xl font-bold text-white">
-          24–48h
-          <span class="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-wa-500/20 align-middle">
-            <svg
-              viewBox="0 0 24 24"
-              class="h-3 w-3 text-wa-500"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M5 13l4 4L19 7"></path>
-            </svg>
-          </span>
-        </p>
+        <!-- Chip: prazo -->
+        <div
+          class="tilt-chip-near absolute -right-8 bottom-12 rounded-2xl border border-white/15 bg-brand-900/80 px-5 py-4 shadow-2xl shadow-brand-950/40 backdrop-blur-md"
+        >
+          <p class="text-[0.7rem] font-medium uppercase tracking-wider text-slate-300">
+            Reparos simples em
+          </p>
+          <p class="font-display mt-0.5 text-2xl font-bold text-white">
+            24–48h
+            <span class="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-wa-500/20 align-middle">
+              <svg
+                viewBox="0 0 24 24"
+                class="h-3 w-3 text-wa-500"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 13l4 4L19 7"></path>
+              </svg>
+            </span>
+          </p>
+        </div>
+
+        <!-- Chip: orçamento -->
+        <div
+          class="tilt-chip-mid absolute -left-6 bottom-24 rounded-full border border-accent-500/30 bg-accent-500/15 px-4 py-2 backdrop-blur-md"
+        >
+          <p class="text-xs font-semibold text-accent-400">
+            Orçamento grátis ✓
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -254,3 +282,106 @@ import { WHATSAPP_URL } from '../config';
     ></path>
   </svg>
 </section>
+
+<style>
+  .tilt-scene {
+    perspective: 1400px;
+  }
+
+  .tilt-card {
+    --gx: 55%;
+    --gy: 30%;
+    transform: rotateX(5deg) rotateY(-9deg);
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  /* Profundidades das camadas (parallax real em 3D) */
+  .tilt-layer {
+    transform: translateZ(24px);
+  }
+
+  .tilt-chip-far {
+    transform: translateZ(64px);
+  }
+
+  .tilt-chip-mid {
+    transform: translateZ(84px);
+  }
+
+  .tilt-chip-near {
+    transform: translateZ(104px);
+  }
+
+  .tilt-glare {
+    background: radial-gradient(
+      circle at var(--gx) var(--gy),
+      rgb(255 255 255 / 0.16),
+      transparent 55%
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tilt-card {
+      transform: rotateX(3deg) rotateY(-6deg);
+    }
+  }
+</style>
+
+<script>
+  const scene = document.getElementById('tilt-scene');
+  const card = document.getElementById('tilt-card');
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+  const reducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  if (scene && card && finePointer && !reducedMotion) {
+    // Inclinação de descanso + amplitude do movimento
+    const BASE_X = 5;
+    const BASE_Y = -9;
+    const RANGE = 9;
+    const EASE = 0.12;
+
+    let targetX = BASE_X;
+    let targetY = BASE_Y;
+    let currentX = BASE_X;
+    let currentY = BASE_Y;
+    let rafId = 0;
+
+    const tick = () => {
+      currentX += (targetX - currentX) * EASE;
+      currentY += (targetY - currentY) * EASE;
+      card.style.transform = `rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg)`;
+      if (
+        Math.abs(targetX - currentX) > 0.04 ||
+        Math.abs(targetY - currentY) > 0.04
+      ) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        rafId = 0;
+      }
+    };
+
+    const schedule = () => {
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    };
+
+    scene.addEventListener('pointermove', (event) => {
+      const rect = scene.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width;
+      const py = (event.clientY - rect.top) / rect.height;
+      targetY = BASE_Y + (px - 0.5) * RANGE * 2;
+      targetX = BASE_X - (py - 0.5) * RANGE * 2;
+      card.style.setProperty('--gx', `${(px * 100).toFixed(1)}%`);
+      card.style.setProperty('--gy', `${(py * 100).toFixed(1)}%`);
+      schedule();
+    });
+
+    scene.addEventListener('pointerleave', () => {
+      targetX = BASE_X;
+      targetY = BASE_Y;
+      schedule();
+    });
+  }
+</script>
